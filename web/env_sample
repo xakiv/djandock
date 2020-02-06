@@ -1,0 +1,27 @@
+# Django conf
+SECRET_KEY=RandomSeCreTKey
+DEBUG=True
+DJANGO_ALLOWED_HOSTS=localhost, 127.0.0.1
+THIRD_PARTY_DJANGO_APPS=django_extensions, rest_framework
+OUR_APPS=sid
+LOGGER_LEVEL=INFO
+
+# Databases conf
+ENGINE=django.contrib.gis.db.backends.postgis
+NAME=djandock_db
+USER=postgres
+PASSWORD=postgres
+HOST=postgres
+PORT=5432
+
+# Email conf
+EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+EMAIL_HOST=email.host.com
+EMAIL_HOST_USER=email@email.com
+EMAIL_HOST_PASSWORD=passpass
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+DEFAULT_FROM_EMAIL=no-replay@contact.fr
+
+# SID conf
+ADMINS_CREDENTIALS=[{"username":"admin", "password":"passpass", "email":"admin.email@email.com"}]

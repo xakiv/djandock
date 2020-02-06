@@ -1,0 +1,1 @@
+[{"model": "sid.organisationtype", "pk": "entreprise", "fields": {"name": "Entreprise"}}, {"model": "sid.organisationtype", "pk": "organisme-public", "fields": {"name": "Organisme publique"}}]
