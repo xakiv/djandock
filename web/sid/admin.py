@@ -1,7 +1,3 @@
-"""
-POUR dev UNIQUEMENT
-"""
-
 from django.contrib import admin
 
 from sid.models import Organisation

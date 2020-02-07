@@ -2,8 +2,8 @@
 SECRET_KEY=RandomSeCreTKey
 DEBUG=True
 DJANGO_ALLOWED_HOSTS=localhost, 127.0.0.1
-THIRD_PARTY_DJANGO_APPS=django_extensions, rest_framework
-OUR_APPS=sid
+THIRD_PARTY_DJANGO_APPS=django_extensions, rest_framework, rest_framework_gis
+OUR_APPS=sid, map_quest
 LOGGER_LEVEL=INFO
 
 # Databases conf
@@ -25,3 +25,6 @@ DEFAULT_FROM_EMAIL=no-replay@contact.fr
 
 # SID conf
 ADMINS_CREDENTIALS=[{"username":"admin", "password":"passpass", "email":"admin.email@email.com"}]
+
+# MapQuest conf
+LOGO_PATH=static/map_quest/img/logo.png

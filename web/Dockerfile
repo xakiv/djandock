@@ -34,10 +34,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # SID django app data ajouté au container web
 RUN django-admin startproject config .
-COPY sid/ ./sid
 COPY config/ ./config/
 COPY data/ ./data/
 COPY .env ./
+COPY sid/ ./sid
+COPY map_quest/ ./map_quest
+
 
 # Permet d'attendre que postgres demarre avant de continuer
 COPY wait-for-it.sh ./wait-for-it.sh

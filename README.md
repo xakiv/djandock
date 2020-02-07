@@ -30,7 +30,7 @@ $ docker-compose -f docker-compose.yml up --build
 
 ### Démarrer un shell qui charge les variables d'environment
 ```shell
-docker run --env-file=web/.env -it djandock_web bash
+$ docker run --env-file=web/.env -it djandock_web bash
 ```
 
 ### Possibilité de connecter la base postgres du contenaire avec un pgadmin du Host
@@ -53,6 +53,13 @@ $ python3.8 -m venv dev-venv
 $ source dev-venv/bin/activate
 $ pip install -r ~/djandock/web/requirements.txt
 $ pip install --upgrade pip
+```
+
+### Sauvegarder l'état courant dans la base de donnée
+On met en place un venv sur le host en reprenant les dépendances du 'requirements.txt'
+```shell
+$ docker run --env-file=web/.env -it djandock_web bash
+$ python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 4 > dump.json
 ```
 
 ### Quelque commandes docker-compose

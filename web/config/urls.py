@@ -11,7 +11,7 @@ urlpatterns = [
 for app in settings.OUR_APPS:
     urlpatterns.insert(
         1,
-        path('{}'.format(app), include('{}.urls'.format(app), namespace=app)),
+        path('{}/'.format(app), include('{}.urls'.format(app), namespace=app)),
     )
 
 if settings.DEBUG:

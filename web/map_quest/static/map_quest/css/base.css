@@ -1,0 +1,87 @@
+/* ---------------------------------- */
+            /* HEADER */
+/* ---------------------------------- */
+
+header {
+  background: #373636;
+}
+
+main {
+  padding: 2em 0em;
+}
+
+
+/* ---------------------------------- */
+            /* MAIN */
+/* ---------------------------------- */
+
+.button-hover-orange:hover {
+  background: #fbbd08 !important;
+}
+.button-hover-green:hover {
+  background: #5bba21 !important;
+}
+.button-hover-red:hover {
+  background: #ee2e24 !important;
+}
+
+.ui.header .content {
+  width: 100%;
+}
+
+.ui.horizontal.divider {
+  color: #1ab2b6!important;
+  padding-top: 1.5em;
+}
+
+.delete-hidden-field {
+  display: none;
+}
+
+.ui.dropdown .menu > .header {
+  font-size: 1em;
+  text-transform: none;
+}
+
+.ui.dropdown .menu.text-wrap {
+  max-width: 80vw;
+  overflow: auto;
+}
+
+.ui.dropdown .menu.text-wrap > .item {
+  white-space: normal;
+  word-wrap: normal;
+}
+
+
+/* ---------------------------------- */
+      /* LEAFLET DRAW TOOLBAR */
+/* ---------------------------------- */
+
+.leaflet-draw-toolbar a.leaflet-draw-draw-circlemarker,
+.leaflet-draw-toolbar a.leaflet-draw-draw-polyline,
+.leaflet-draw-toolbar a.leaflet-draw-draw-polygon {
+    background-color: #FFA19E;
+}
+
+
+/* ---------------------------------- */
+            /* FOOTER */
+/* ---------------------------------- */
+footer {
+  background-color: #464646;
+  text-align: center;
+}
+
+footer .ui.text.menu .item {
+  color: #ffffff;
+  padding: 5px 14px;
+}
+
+footer .ui.text.menu a.item:hover {
+  color: #1ab2b6;
+}
+
+footer .ui.text.menu .item:not(:first-child) {
+    border-left: 1px solid rgba(34,36,38,.15);
+}
