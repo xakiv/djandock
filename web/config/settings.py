@@ -177,8 +177,6 @@ OIDC_SETTED = True
 
 # MapQuest conf
 
-LOGO_PATH = config('LOGO_PATH')
-
 APPLICATION_NAME = "Cartographe"
 
 APPLICATION_ABSTRACT = "Dessiner c'est gagné"
