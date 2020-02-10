@@ -10,14 +10,14 @@
   <title>{% block title %}{% endblock %}</title>
 
   <!-- jQuery Core 3.3.1 -->
-  <script src="{% static 'map_box/resources/jquery-3.4.1/jquery-3.4.1.min.js'%}"></script>
+  <script src="{% static 'map_quest/resources/jquery-3.4.1/jquery-3.4.1.min.js'%}"></script>
   <!-- Semantic UI -->
-  <link rel="stylesheet" href="{% static 'map_box/resources/semantic-ui-2.4.2/semantic.min.css' %}" />
-  <script src="{% static 'map_box/resources/semantic-ui-2.4.2/semantic.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'map_quest/resources/semantic-ui-2.4.2/semantic.min.css' %}" />
+  <script src="{% static 'map_quest/resources/semantic-ui-2.4.2/semantic.min.js' %}"></script>
 
   <!-- Leaflet -->
-  <link rel="stylesheet" href="{% static 'map_box/resources/leaflet-1.5.1/leaflet.css' %}" />
-  <script src="{% static 'map_box/resources/leaflet-1.5.1/leaflet.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'map_quest/resources/leaflet-1.5.1/leaflet.css' %}" />
+  <script src="{% static 'map_quest/resources/leaflet-1.5.1/leaflet.js' %}"></script>
   <!-- Leaflet Draw -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" integrity="sha256-XzD3RpaHPv7lzX9qt+2n1j5cWj48O24KsgaGYpKN8x8=" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js" integrity="sha256-siofc4Uwjlra3YWkwthOn8Uj69cNN4aMug/iOHNiRgs=" crossorigin="anonymous"></script>
@@ -28,8 +28,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
 
   <!-- Custom -->
-  <link rel="stylesheet" href="{% static 'map_box/css/base.css' %}"/>
-  <script src="{% static 'map_box/js/base.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'map_quest/css/base.css' %}"/>
+  <script src="{% static 'map_quest/js/base.js' %}"></script>
   {% block custom_resources %}
   {% endblock %}
 
@@ -40,7 +40,7 @@
     <div class="ui container">
       <div class="ui inverted icon menu">
         <a href="{% url 'map_quest:index' %}" class="header item">
-          <img class="ui mini right spaced image" src="{{ LOGO_PATH }}">
+          <img class="ui mini right spaced image" src="{% static 'map_quest/img/logo.png' %}">
           {{ APPLICATION_NAME }}
         </a>
       </div>
