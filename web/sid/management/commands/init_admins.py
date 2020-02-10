@@ -15,7 +15,6 @@ logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
 
-
     def handle(self, *args, **options):
         if not User.objects.filter(is_superuser=True, is_active=True).exists():
             admins_data = os.getenv('ADMINS_CREDENTIALS', '{}')

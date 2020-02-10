@@ -1,0 +1,30 @@
+{% if messages %}
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="eight wide column">
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div class="ui success message">
+          <div class="header">
+            <i class="success thumbs up outline icon"></i> {{ message }}
+          </div>
+        </div>
+        {% elif message.tags == 'info' %}
+        <div class="ui info message">
+          <div class="header">
+            <i class="info circle icon"></i> {{ message }}
+          </div>
+        </div>
+        {% elif message.tags == 'error' %}
+        <div class="ui error message">
+          <div class="header">
+            <i class="error circle icon"></i> {{ message }}
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<br />
+{% endif %}

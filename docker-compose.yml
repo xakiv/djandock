@@ -22,6 +22,7 @@ services:
     tty: true
     volumes:
       - ./web/sid:/code/sid  # A faire correspondre avec le COPY du Dockerfile de web pour la synchro live
+      - ./web/map_quest:/code/map_quest  # A faire correspondre avec le COPY du Dockerfile de web pour la synchro live
       - static:/code/static
       - media:/code/media
     ports:

@@ -62,6 +62,11 @@ LOGGING = {
             'level': LOGGER_LEVEL,
             'propagate': True,
         },
+        'map_quest': {
+            'handlers': ['console'],
+            'level': LOGGER_LEVEL,
+            'propagate': True,
+        },
         'test': {
             'handlers': ['console'],
             'level': 'DEBUG',

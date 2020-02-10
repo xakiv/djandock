@@ -153,12 +153,19 @@ SITE_ID = 1
 
 # Email confs
 
-EMAIL_BACKEND = config('EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")
+EMAIL_BACKEND = config(
+    'EMAIL_BACKEND', default="django.core.mail.backends.console.EmailBackend")
+
 EMAIL_HOST = config('EMAIL_HOST')
+
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
+
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 # SID conf
@@ -166,3 +173,31 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 HEADER_UID = 'OIDC_CLAIM_uid'
 
 OIDC_SETTED = True
+
+# MapQuest conf
+
+LOGO_PATH = config('LOGO_PATH')
+
+APPLICATION_NAME = "Cartographe"
+
+APPLICATION_ABSTRACT = "Dessiner c'est gagné"
+
+IMAGE_FORMAT = "application/pdf,image/png,image/jpeg"
+
+FILE_MAX_SIZE = 10000000
+
+DEFAULT_BASE_MAP = {
+    'SERVICE': 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+    'OPTIONS': {
+        'attribution': '&copy; contributeurs d\'<a href="https://osm.org/copyright">OpenStreetMap</a>',
+        'maxZoom': 20
+    }
+}
+
+DEFAULT_MAP_VIEW = {
+    'center': [50.00976, 2.8657699],
+    'zoom': 7
+}
+
+DATASETS_VERBOSE_NAME = 'Scénario'
+DATASETS_VERBOSE_NAME_PLURAL = DATASETS_VERBOSE_NAME + 's'

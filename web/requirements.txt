@@ -1,6 +1,7 @@
 Django==2.2.9
 django-extensions==2.2.5
 djangorestframework==3.11
+djangorestframework-gis==0.15
 psycopg2-binary==2.8.4
 Pillow==2.0.0
 python-decouple==3.3

@@ -1,7 +1,3 @@
-"""
-UNIQUEMENT POUR DEV
-"""
-
 import logging
 from urllib.parse import urljoin
 import uuid
