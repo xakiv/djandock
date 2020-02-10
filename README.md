@@ -11,7 +11,7 @@ postgres,
 
 ### Récuperer les sources
 ```shell
-git clone https://gitlab.com/cbngcontact/djandock.git djandock
+git clone https://gitlab.com/niark.hipps/djandock.git djandock
 ```
 
 ### Définir les variable d'environnement à partir du pattern fournit dans web/env_sample
