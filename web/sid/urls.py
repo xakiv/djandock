@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import path
 from rest_framework import routers
 
 from sid.views.user import AgentViews
@@ -16,14 +16,14 @@ app_name = 'sid'
 
 router = routers.DefaultRouter()
 
-router.register(r'agent', AgentViews, basename='agent')
-router.register(r'employee', EmployeeViews, basename='employee')
-router.register(r'organism', OrganismViews, basename='organism')
-router.register(r'company', CompanyViews, basename='company')
+router.register('agent', AgentViews, basename='agent')
+router.register('employee', EmployeeViews, basename='employee')
+router.register('organism', OrganismViews, basename='organism')
+router.register('company', CompanyViews, basename='company')
 
 urlpatterns = [
     # Si besoin d'urls supplémentaires
-    url(r'mon-compte/?', TestAuthentViews.as_view())
+    path('mon-compte/', TestAuthentViews.as_view())
 ]
 
 urlpatterns += router.urls

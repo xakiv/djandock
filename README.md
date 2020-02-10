@@ -7,6 +7,7 @@
 - Contient une base de travail pour un projet django/geodjango avec une base
 postgres,
 - La base postrges est accessible depuis la machine hôte
+- On peut attacher la sortie/entré d'un terminal interactif de debug python
 
 ### Récuperer les sources
 ```shell
@@ -53,6 +54,18 @@ $ python3.8 -m venv dev-venv
 $ source dev-venv/bin/activate
 $ pip install -r ~/djandock/web/requirements.txt
 $ pip install --upgrade pip
+```
+En ayant recuperer le nom généré du conteneur de la partie web
+```shell
+docker ps -a
+>
+CONTAINER     ID           ..... NAMES
+224dee790eb1  djandock_web ..... djandock_web_1 <<<
+```
+
+On peut accéder au terminal interactif de debug en appelant
+```shell
+docker attach djandock_web_1
 ```
 
 ### Sauvegarder l'état courant dans la base de donnée

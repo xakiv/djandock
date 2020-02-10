@@ -18,7 +18,7 @@ from sid.fake_ckan_module import CkanBaseError
 from sid.fake_ckan_module import CkanHandler
 
 # TODO switcher sur modules idgo_admin.models
-from sid.models import LiaisonsContributeurs, Organisation, Profile
+from sid.models import Organisation, Profile
 from sid.xml_io import XMLtParser
 from sid.xml_io import XMLRenderer
 from sid.exceptions import SidGenericError
@@ -353,11 +353,10 @@ class TestAuthentViews(APIView):
     def get(self, request, *args, **kargs):
         prf = Profile.objects.get(user=request.user)
         data = {
-            # 'username': prf.user.username,
+            'username': prf.user.username,
             'first_name': prf.user.first_name,
             'last_name': prf.user.last_name,
             'is_staff': prf.user.is_staff,
-            'sid_id': prf.user.username,
             'organisation': prf.organisation.legal_name if prf.organisation else ''
         }
         return Response(data=data, status=status.HTTP_200_OK)

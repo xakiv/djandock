@@ -18,6 +18,7 @@ services:
 
   web:
     build: ./web
+    restart: always
     stdin_open: true
     tty: true
     volumes:
@@ -25,8 +26,8 @@ services:
       - ./web/map_quest:/code/map_quest  # A faire correspondre avec le COPY du Dockerfile de web pour la synchro live
       - static:/code/static
       - media:/code/media
-    ports:
-      - "8888:8000"
+    expose:
+      - "8080"
     env_file:
       - web/.env
     command: |
@@ -36,21 +37,20 @@ services:
       python manage.py migrate &&
       python manage.py init_admins &&
       python manage.py init_fixtures &&
-      python manage.py runserver 0.0.0.0:8000"
+      gunicorn config.wsgi --bind 0.0.0.0:8080 --workers=3 --access-logfile - --reload --timeout 600"
 
-  # TODO: ajout d'nginx
-  # nginx:
-  #     restart: always
-  #     build: ./nginx/
-  #     volumes:
-  #       - ./nginx/:/etc/nginx/conf.d
-  #       - ./logs/:/code/logs
-  #       - static:/code/static
-  #       - media:/code/media
-  #     ports:
-  #       - "1221:80"
-  #     links:
-  #       - web
+  nginx:
+      restart: always
+      build: ./nginx/
+      volumes:
+        - ./nginx/:/etc/nginx/conf.d
+        - ./logs/:/code/logs
+        - static:/code/static
+        - media:/code/media
+      ports:
+        - "1221:80"
+      links:
+        - web
 
 volumes:
   postgres_data:
