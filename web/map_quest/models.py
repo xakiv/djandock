@@ -23,7 +23,7 @@ class Dataset(models.Model):
         return [subset.attachement for subset in self.subsets.all()]
 
 
-class Node(models.Model):
+class ContextualGeom(models.Model):
 
     label = models.CharField('Label', max_length=2048)
 
@@ -33,18 +33,23 @@ class Node(models.Model):
 
     is_active = models.BooleanField('Est valide', default=True)
 
+    class Meta:
+        abstract = True
+
+
+class Node(ContextualGeom):
+
     geom = models.PointField('POI', srid=4326)
 
 
-class Edge(models.Model):
-
-    color = models.CharField(
-        verbose_name='Couleur', max_length=7, blank=True, null=True
-    )
-
-    is_active = models.BooleanField('Est valide', default=True)
+class Edge(ContextualGeom):
 
     geom = models.MultiLineStringField('Ligne', srid=4326)
+
+
+class Polygon(ContextualGeom):
+
+    geom = models.MultiPolygonField('Zones', srid=4326)
 
 
 class Subset(models.Model):
@@ -57,6 +62,8 @@ class Subset(models.Model):
     nodes = models.ManyToManyField('map_quest.Node')
 
     edges = models.ManyToManyField('map_quest.Edge')
+
+    polygones = models.ManyToManyField('map_quest.Polygon')
 
     color = models.CharField(
         verbose_name='Couleur par défaut', max_length=7, blank=True, null=True
