@@ -15,5 +15,5 @@ while True:
         s.close()
         break
     except socket.error as ex:
-        print('WAITING FOR POSTGRES')
+        print('Waiting for postgres ...')
         time.sleep(0.1)

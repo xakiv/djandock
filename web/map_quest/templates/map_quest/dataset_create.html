@@ -1,0 +1,66 @@
+{% extends "map_quest/base.html" %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+
+<form name="dataset" method="post" action="" enctype="multipart/form-data">
+	{% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    <div class="field">
+      <div class="two fields">
+        <div class="required field">
+          {{ form.label.label_tag }}
+          {{ form.label }}
+          {{ form.label.errors }}
+        </div>
+        <div class="field">
+          {{ form.description.label_tag }}
+          {{ form.description }}
+          {{ form.description.errors }}
+        </div>
+      </div>
+    </div>
+
+      <p>
+        {{ form.logo.label_tag }}
+        {{ form.logo }}
+        {{ form.logo.errors }}
+        <button id="add-logo" type="button" class="ui compact button">
+          <i class="file image icon"></i>Importer un logo
+        </button>
+        Vous pouvez importer un logo qui vous tiens à coeur.
+      </p>
+
+
+
+	<div class="buttons-on-the-right-side">
+		<a class="btn btn-default" href="{% url 'map_quest:index' %}">Annuler</a>
+		<button type="submit" name="save" class="btn btn-primary">Enregistrer</button>
+	</div>
+	<hr />
+	<div class="row">
+		<div class="col-xs-12">
+			<small>* Les champs marqués d'un astérisque sont obligatoires.</small>
+		</div>
+	</div>
+</form>
+
+{% endblock content %}
+
+{% block third_party %}
+<script>
+
+$(document).ready(function() {
+
+  $('#add-geo-image').click(function() {
+    $('.mini.modal').modal('show')
+  })
+
+})
+
+</script>
+{% endblock third_party %}

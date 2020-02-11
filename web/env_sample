@@ -1,5 +1,5 @@
 # Docker conf
-DEV_MODE=false
+DEV_MODE=False
 
 # Django conf
 SECRET_KEY=RandomSeCreTKey
