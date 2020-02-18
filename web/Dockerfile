@@ -33,13 +33,12 @@ RUN pip install --upgrade pip
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# SID django app data ajouté au container web
-RUN django-admin startproject config .
-COPY config/ ./config/
+COPY config/ ./tmp/config/
 COPY data/ ./data/
 COPY .env ./
-COPY sid/ ./sid
-COPY map_quest/ ./map_quest
+COPY geocontrib/ ./geocontrib
+COPY ideo_bfc_sid/ ./ideo_bfc_sid
+COPY api/ ./api
 
 # Scripts pour séquence de deploiement
 COPY entrypoints/wait_for_postgres.py ./wait_for_postgres.py

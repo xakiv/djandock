@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# On regroupe les urls d'appli en autant de sous-domaines qu'il y a d'appli
+# On ajoute les urls d'appli en autant de sous-domaines qu'il y a d'appli
 for app in settings.OUR_APPS:
     urlpatterns.insert(
         1,

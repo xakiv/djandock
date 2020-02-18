@@ -22,8 +22,9 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./web/sid:/code/sid  # A faire correspondre avec le COPY du Dockerfile de web pour la synchro live
-      - ./web/map_quest:/code/map_quest  # A faire correspondre avec le COPY du Dockerfile de web pour la synchro live
+      - ./web/geocontrib:/code/geocontrib
+      - ./web/ideo_bfc_sid:/code/ideo_bfc_sid
+      - ./web/api:/code/api
       - static:/code/static
       - media:/code/media
     expose:
@@ -31,13 +32,7 @@ services:
     env_file:
       - web/.env
     command: |
-      bash -c "./wait-for-it.sh postgres:5432 &&
-      python manage.py collectstatic --no-input &&
-      python manage.py makemigrations &&
-      python manage.py migrate &&
-      python manage.py init_admins &&
-      python manage.py init_fixtures &&
-      gunicorn config.wsgi --bind 0.0.0.0:8080 --workers=3 --access-logfile - --reload --timeout 600"
+      bash -c "./start.sh"
 
   nginx:
       restart: always

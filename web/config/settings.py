@@ -77,7 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'map_quest.context_processors.custom_contexts'
+                # 'map_quest.context_processors.custom_contexts'
             ],
         },
     },
@@ -174,6 +174,10 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 HEADER_UID = 'OIDC_CLAIM_uid'
 
 OIDC_SETTED = True
+
+# Geocontrib conf
+
+AUTH_USER_MODEL = 'geocontrib.User'
 
 # MapQuest conf
 
