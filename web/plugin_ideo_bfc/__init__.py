@@ -13,17 +13,4 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-
-from rest_framework import routers
-
-from ideo_bfc_sid.views.user import AgentViews
-from ideo_bfc_sid.views.user import EmployeeViews
-
-
-app_name = 'ideo_bfc_sid'
-
-router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'agent', AgentViews, basename='agent')
-router.register(r'employee', EmployeeViews, basename='employee')
-
-urlpatterns = router.urls
+default_app_config = 'plugin_ideo_bfc.apps.PluginIdeoBfcConfig'

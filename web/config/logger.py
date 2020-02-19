@@ -29,7 +29,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'console': {
-            'level': LOGGER_LEVEL,
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             # 'formatter': 'verbose_colored'
             'formatter': 'verbose'
@@ -62,7 +62,7 @@ LOGGING = {
             'level': LOGGER_LEVEL,
             'propagate': True,
         },
-        'map_quest': {
+        'plugin_ideo_bfc': {
             'handlers': ['console'],
             'level': LOGGER_LEVEL,
             'propagate': True,

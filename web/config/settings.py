@@ -52,7 +52,7 @@ OUR_APPS = config('OUR_APPS', default=[], cast=Csv())
 
 INSTALLED_APPS = CORE_APPS + THIRD_PARTY_DJANGO_APPS + OUR_APPS
 
-MIDDLEWARE = [
+CORE_MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,6 +62,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.RemoteUserMiddleware',
 ]
+
+OUR_MIDDLEWARE = config('OUR_MIDDLEWARE', default=[], cast=Csv())
+
+MIDDLEWARE = CORE_MIDDLEWARE + OUR_MIDDLEWARE
 
 
 ROOT_URLCONF = 'config.urls'
@@ -77,7 +81,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'map_quest.context_processors.custom_contexts'
             ],
         },
     },
@@ -169,25 +172,32 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
-# SID conf
-
-HEADER_UID = 'OIDC_CLAIM_uid'
-
-OIDC_SETTED = True
-
 # Geocontrib conf
 
 AUTH_USER_MODEL = 'geocontrib.User'
 
-# MapQuest conf
+LOGIN_URL = 'geocontrib:login'
 
-APPLICATION_NAME = "Cartographe"
+LOGIN_REDIRECT_URL = 'geocontrib:index'
 
-APPLICATION_ABSTRACT = "Dessiner c'est gagné"
+LOGOUT_REDIRECT_URL = 'geocontrib:index'
+
+APPLICATION_NAME = "Géocontrib"
+
+APPLICATION_ABSTRACT = "Application collaborative"
 
 IMAGE_FORMAT = "application/pdf,image/png,image/jpeg"
 
-FILE_MAX_SIZE = 10000000
+# Notification frequency (allowed values: 'never', 'instantly', 'daily', 'weekly')
+DEFAULT_SENDING_FREQUENCY = config('GEOCONTRIB_DEFAULT_SENDING_FREQUENCY', default='never')
+
+LOGO_PATH = config('GEOCONTRIB_LOGO_PATH', default=os.path.join(MEDIA_URL, 'logo.png'))
+
+# Allowed formats for file attachments
+IMAGE_FORMAT = config('GEOCONTRIB_IMAGE_FORMAT', default='application/pdf,image/png,image/jpeg')
+
+# Max size of file attachments
+FILE_MAX_SIZE = config('GEOCONTRIB_FILE_MAX_SIZE', default=10000000)
 
 DEFAULT_BASE_MAP = {
     'SERVICE': 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
@@ -202,5 +212,8 @@ DEFAULT_MAP_VIEW = {
     'zoom': 7
 }
 
-DATASETS_VERBOSE_NAME = 'Scénario'
-DATASETS_VERBOSE_NAME_PLURAL = DATASETS_VERBOSE_NAME + 's'
+# IdeO BFC conf
+
+HEADER_UID = config('HEADER_UID', default=None)
+
+OIDC_SETTED = config('OIDC_SETTED', default=False, cast=bool)

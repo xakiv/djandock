@@ -8,7 +8,8 @@ SECRET_KEY=RandomSeCreTKey
 DEBUG=True
 DJANGO_ALLOWED_HOSTS=localhost, 127.0.0.1
 THIRD_PARTY_DJANGO_APPS=django_extensions, rest_framework, rest_framework_gis
-OUR_APPS=sid, map_quest
+OUR_APPS=geocontrib, api, plugin_ideo_bfc
+OUR_MIDDLEWARE=plugin_ideo_bfc.auth.middleware.RemoteUserMiddleware
 LOGGER_LEVEL=INFO
 
 # Databases conf
@@ -28,5 +29,9 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 DEFAULT_FROM_EMAIL=no-replay@contact.fr
 
-# SID conf
+# Geocontrib conf
 ADMINS_CREDENTIALS=[{"username":"admin", "password":"passpass", "email":"admin.email@email.com"}]
+
+# Plugin IdeO BFC
+HEADER_UID=OIDC_CLAIM_uid
+OIDC_SETTED=True

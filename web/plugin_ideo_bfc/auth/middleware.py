@@ -22,24 +22,32 @@ from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse
-
+from django.urls import resolve
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
 
+IGNORE_PATH = getattr(settings, 'IGNORE_PATH', ['geocontrib:login', ])
 
-class SidRemoteUserMiddleware(object):
 
-    IGNORE_PATH = (
-        # Urls ouvertes:
-        # ...
-    )
+class RemoteUserMiddleware(object):
 
     header = getattr(settings, 'HEADER_UID', 'OIDC_CLAIM_uid')
     oidc_setted = getattr(settings, 'OIDC_SETTED', False)
 
     def __init__(self, get_response):
         self.get_response = get_response
+
+    def path_is_ignored(self, request, admin_ingnored=True):
+        """Détermine si la requete courante concerne une url qui n'a pas besoin
+        d'etre traiter par ce middleware. Et si on traite les requete en direction
+        du site d'admin Django
+        """
+        if admin_ingnored and request.path.startswith(reverse('admin:index')):
+            return True
+        resolved = resolve(request.path)
+        namespace = "{}:{}".format(resolved.app_names[0], resolved.url_name)
+        return IGNORE_PATH.count(namespace) > 0
 
     def process_request(self, request):
         sid_user_id = request.META.get(self.header)
@@ -57,12 +65,10 @@ class SidRemoteUserMiddleware(object):
             else:
                 backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request, user, backend=backend)
-        # Sinon rien
 
     def __call__(self, request):
-
-        if request.path not in self.IGNORE_PATH or \
-                not request.path.startswith(reverse('admin:index')):
+        logger.debug(request.META)
+        if not self.path_is_ignored(request):
             self.process_request(request)
 
         response = self.get_response(request)

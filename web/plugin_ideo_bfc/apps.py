@@ -17,6 +17,6 @@
 from django.apps import AppConfig
 
 
-class IdeoBfcSidConfig(AppConfig):
-    name = 'ideo_bfc_sid'
-    verbose_name = 'IDéO BFC - Socle des Identités'
+class PluginIdeoBfcConfig(AppConfig):
+    name = 'plugin_ideo_bfc'
+    verbose_name = 'Plugin IDéO BFC pour Géocontrib'

@@ -22,7 +22,7 @@ from rest_framework.renderers import BaseRenderer
 import xmltodict
 
 
-logger = logging.getLogger('d0jango')
+logger = logging.getLogger(__name__)
 
 
 class XMLRenderer(BaseRenderer):

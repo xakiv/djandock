@@ -4,8 +4,13 @@ MAINTAINER ChakibBHB <niark.hipps@gmail.com>
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set work directory
-# RUN mkdir /code WORKDIR already create /code dir if it doesn't exist
+# Ajout d'alias bash
+RUN echo 'alias ls="ls --color=auto"' >> ~/.bashrc
+RUN echo 'alias ll="ls -alF"' >> ~/.bashrc
+RUN echo 'alias l="ls -CF"' >> ~/.bashrc
+
+
+# RUN mkdir /code : Redondant avec WORKDIR qui crée le repertoire si absent
 WORKDIR /code
 
 # Dépendances systemes pour le projet
@@ -37,7 +42,7 @@ COPY config/ ./tmp/config/
 COPY data/ ./data/
 COPY .env ./
 COPY geocontrib/ ./geocontrib
-COPY ideo_bfc_sid/ ./ideo_bfc_sid
+COPY plugin_ideo_bfc/ ./plugin_ideo_bfc
 COPY api/ ./api
 
 # Scripts pour séquence de deploiement

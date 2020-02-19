@@ -19,3 +19,5 @@ class Command(BaseCommand):
             for data in json.loads(admins_data):
                 user = User.objects.create_superuser(**data)
                 logger.info("Superuser created: {}".format(user.username))
+        else:
+            logger.info("At least one active superuser already exists")

@@ -28,9 +28,9 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 import xmltodict
 
-from ideo_bfc_sid.xml_io import XMLtParser
-from ideo_bfc_sid.xml_io import XMLRenderer
-from ideo_bfc_sid.exceptions import SidGenericError
+from plugin_ideo_bfc.xml_io import XMLtParser
+from plugin_ideo_bfc.xml_io import XMLRenderer
+from plugin_ideo_bfc.exceptions import SidGenericError
 
 
 User = get_user_model()

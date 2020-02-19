@@ -4,6 +4,7 @@ services:
   postgres:
       build: ./postgres
       restart: unless-stopped
+      container_name: geocontrib_postgres
       ports:
         - "5555:5432"
       expose:
@@ -19,11 +20,12 @@ services:
   web:
     build: ./web
     restart: always
+    container_name: geocontrib_web
     stdin_open: true
     tty: true
     volumes:
       - ./web/geocontrib:/code/geocontrib
-      - ./web/ideo_bfc_sid:/code/ideo_bfc_sid
+      - ./web/plugin_ideo_bfc:/code/plugin_ideo_bfc
       - ./web/api:/code/api
       - static:/code/static
       - media:/code/media
@@ -35,8 +37,9 @@ services:
       bash -c "./start.sh"
 
   nginx:
-      restart: always
       build: ./nginx/
+      restart: always
+      container_name: geocontrib_nginx
       volumes:
         - ./nginx/:/etc/nginx/conf.d
         - ./logs/:/code/logs

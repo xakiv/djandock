@@ -10,7 +10,7 @@
     ```
     INSTALLED_APPS = [
         # ...
-        'ideo_bfc_sid',
+        'plugin_ideo_bfc',
         # ...
     ]
     ```
@@ -21,8 +21,7 @@
     MIDDLEWARE = [
         # ...
         'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'ideo_bfc_sid.auth.middleware.SidRemoteUserMiddleware',
-        'ideo_bfc_sid.auth.middleware.LogOut',
+        'plugin_ideo_bfc.auth.middleware.SidRemoteUserMiddleware',
         # ...
     ```
 
@@ -42,5 +41,3 @@
 
 
 L'_username_ du modèle **User** de Django correspond à l'identifiant de l'agent/employée.
-
-Le _slug_ du modèle **Organisation** de IDGO correspond à l'identifiant de l'organisme/la companie.
