@@ -3,7 +3,7 @@
 ./wait_for_postgres.py
 
 FILE=/code/manage.py
-if [-f "$FILE"]; then
+if [ -f "$FILE" ]; then
     echo "Django project has already been started"
 else
   django-admin startproject config .

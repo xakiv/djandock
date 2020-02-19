@@ -3,7 +3,7 @@ version: "3.7"
 services:
   postgres:
       build: ./postgres
-      restart: unless-stopped
+      restart: always
       container_name: geocontrib_postgres
       ports:
         - "5555:5432"
@@ -13,7 +13,7 @@ services:
             LC_ALL: C.UTF-8
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: djandock_db
+            POSTGRES_DB: geocontrib_db
       volumes:
           - postgres_data:/var/lib/postgresql/data/
 

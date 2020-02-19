@@ -14,7 +14,7 @@ LOGGER_LEVEL=INFO
 
 # Databases conf
 ENGINE=django.contrib.gis.db.backends.postgis
-NAME=djandock_db
+NAME=geocontrib_db
 USER=postgres
 PASSWORD=postgres
 HOST=postgres

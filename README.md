@@ -24,14 +24,14 @@ cp ~/djandock/web/env_sample ~/djandock/web/.env
 $ docker-compose -f docker-compose.yml build
 ```
 
-### Démarrer les docker et rebuilder si besoin
+### Démarrer les docker en re construisant les containers
 ```shell
 $ docker-compose -f docker-compose.yml up --build
 ```
 
-### Démarrer un shell qui charge les variables d'environment
+### Démarrer un shell au sein du container contenant les app Django
 ```shell
-$ docker run --env-file=web/.env -it djandock_web bash
+$ docker exec -it geocontrib_web bash
 ```
 
 ### Possibilité de connecter la base postgres du contenaire avec un pgadmin du Host
