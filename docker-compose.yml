@@ -2,20 +2,20 @@ version: "3.7"
 
 services:
   postgres:
-      build: ./postgres
-      restart: always
-      container_name: geocontrib_postgres
-      ports:
-        - "5555:5432"
-      expose:
-        - 5432
-      environment:   # Utilisées par le script d'init
-            LC_ALL: C.UTF-8
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: geocontrib_db
-      volumes:
-          - postgres_data:/var/lib/postgresql/data/
+    build: ./postgres
+    restart: always
+    container_name: geocontrib_postgres
+    ports:
+      - "5555:5432"
+    expose:
+      - 5432
+    environment:   # Utilisées par le script d'init
+          LC_ALL: C.UTF-8
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: geocontrib_db
+    volumes:
+        - postgres_data:/var/lib/postgresql/data/
 
   web:
     build: ./web
@@ -37,18 +37,18 @@ services:
       bash -c "./start.sh"
 
   nginx:
-      build: ./nginx/
-      restart: always
-      container_name: geocontrib_nginx
-      volumes:
-        - ./nginx/:/etc/nginx/conf.d
-        - ./logs/:/code/logs
-        - static:/code/static
-        - media:/code/media
-      ports:
-        - "1221:80"
-      links:
-        - web
+    build: ./nginx/
+    restart: always
+    container_name: geocontrib_nginx
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d
+      - ./logs/:/code/logs
+      - static:/code/static
+      - media:/code/media
+    ports:
+      - "1221:80"
+    links:
+      - web
 
 volumes:
   postgres_data:
