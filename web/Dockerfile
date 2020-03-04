@@ -44,6 +44,7 @@ COPY .env ./
 COPY geocontrib/ ./geocontrib
 COPY plugin_ideo_bfc/ ./plugin_ideo_bfc
 COPY api/ ./api
+COPY another_one/ ./another_one
 
 # Scripts pour séquence de deploiement
 COPY entrypoints/wait_for_postgres.py ./wait_for_postgres.py

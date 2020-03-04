@@ -17,7 +17,7 @@ cp /code/tmp/config/logger.py /code/config/logger.py
 ./manage.py collectstatic --no-input
 
 if [ "$DEV_MODE" == "True" ]; then
-  ./manage.py flush --no-input
+  # ./manage.py flush --no-input
   ./manage.py showmigrations
   ./manage.py makemigrations --no-input
   ./manage.py migrate

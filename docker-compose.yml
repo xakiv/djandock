@@ -4,29 +4,31 @@ services:
   postgres:
     build: ./postgres
     restart: always
-    container_name: geocontrib_postgres
+    container_name: djandock_postgres
     ports:
       - "5555:5432"
     expose:
       - 5432
     environment:   # Utilisées par le script d'init
-          LC_ALL: C.UTF-8
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: geocontrib_db
+      LC_ALL: C.UTF-8
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: djandock_db
+      POSTGRES_SCHEMA1: djandock
+      POSTGRES_SCHEMA2: switch
     volumes:
         - postgres_data:/var/lib/postgresql/data/
 
   web:
     build: ./web
-    restart: always
-    container_name: geocontrib_web
+    container_name: djandock_web
     stdin_open: true
     tty: true
     volumes:
       - ./web/geocontrib:/code/geocontrib
       - ./web/plugin_ideo_bfc:/code/plugin_ideo_bfc
       - ./web/api:/code/api
+      - ./web/another_one:/code/another_one
       - static:/code/static
       - media:/code/media
     expose:
@@ -39,10 +41,11 @@ services:
   nginx:
     build: ./nginx/
     restart: always
-    container_name: geocontrib_nginx
+    container_name: djandock_nginx
     volumes:
       - ./nginx/:/etc/nginx/conf.d
       - ./logs/:/code/logs
+      - dj_data:/code/config
       - static:/code/static
       - media:/code/media
     ports:
@@ -52,5 +55,6 @@ services:
 
 volumes:
   postgres_data:
+  dj_data:
   media:
   static:
