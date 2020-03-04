@@ -2,19 +2,20 @@
 DEV_MODE=True
 INSTALL_MODE=False
 PROD_MODE=False
+COMPOSE_HTTP_TIMEOUT=61
 
 # Django conf
-SECRET_KEY=RandomSeCreTKey
+SECRET_KEY=-%zdrff_129br71t^)_9b1q9c0v$ji4^e89fx2hy3ryk48_cn9p7p8%5y
 DEBUG=True
-DJANGO_ALLOWED_HOSTS=localhost, 127.0.0.1
+DJANGO_ALLOWED_HOSTS=localhost, 127.0.0.1, 0.0.0.0
 THIRD_PARTY_DJANGO_APPS=django_extensions, rest_framework, rest_framework_gis
-OUR_APPS=geocontrib, api, plugin_ideo_bfc
-OUR_MIDDLEWARE=plugin_ideo_bfc.auth.middleware.RemoteUserMiddleware
+OUR_APPS=geocontrib, api, another_one
 LOGGER_LEVEL=INFO
+DATABASE_ROUTERS=another_one.router.MyShinyRouter,
 
 # Databases conf
 ENGINE=django.contrib.gis.db.backends.postgis
-NAME=geocontrib_db
+NAME=djandock_db
 USER=postgres
 PASSWORD=postgres
 HOST=postgres
@@ -22,16 +23,18 @@ PORT=5432
 
 # Email conf
 EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-EMAIL_HOST=email.host.com
-EMAIL_HOST_USER=email@email.com
-EMAIL_HOST_PASSWORD=passpass
+EMAIL_HOST=smtp-neogeo.alwaysdata.net
+EMAIL_HOST_USER=idgo@neogeo-technologies.fr
+EMAIL_HOST_PASSWORD=A24KZhqzyhr2de7G
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-DEFAULT_FROM_EMAIL=no-replay@contact.fr
+DEFAULT_FROM_EMAIL=no-replay@geocontrib.fr
 
-# Geocontrib conf
-ADMINS_CREDENTIALS=[{"username":"admin", "password":"passpass", "email":"admin.email@email.com"}]
+# Geocontrib confs
+ADMINS_CREDENTIALS=[{"username":"admin", "password":"neogeo", "email":"cbngcontact+djandock@gmail.com"}]
 
 # Plugin IdeO BFC
-HEADER_UID=OIDC_CLAIM_uid
-OIDC_SETTED=True
+OUR_PLUGIN=plugin_ideo_bfc
+HEADER_UID=USER_UID_SEC
+SSO_SETTED=False
+# OUR_MIDDLEWARE=plugin_ideo_bfc.auth.middleware.RemoteUserMiddleware
