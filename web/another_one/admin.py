@@ -1,5 +1,5 @@
 from django.contrib.gis import admin
-from another_one.models import Switch
+from another_one.models import Transfer
 
 
-admin.site.register(Switch)
+admin.site.register(Transfer)

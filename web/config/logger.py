@@ -72,5 +72,10 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'another_one': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     },
 }

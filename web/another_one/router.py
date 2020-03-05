@@ -1,3 +1,8 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 class MyShinyRouter:
     """
     Permet de diriger les accés de l'application {APP_NAME}
@@ -31,15 +36,12 @@ class MyShinyRouter:
         return None
 
     def allow_migrate(self, db, app_label, model_name=None, **hints):
-        # Permet de choisir si on veut autorisé les migrations
+        # Permet de choisir si on veut autoriser les migrations
 
-        # Autorisation de migrations de APP_NAME sur base DB_NAME
-        # Si on présente une migration qui concerne notre application
-        if app_label in self.allowed_apps:
-            return self.ALLOWING_APP_MIGRATIONS
-
-        # SI le param --database=DB_NAME
-        elif db == self.DB_NAME:
-            return self.ALLOWING_APP_MIGRATIONS
+        if db == self.DB_NAME:
+            logger.info((db, app_label, app_label in self.allowed_apps))
+            return app_label in self.allowed_apps
+        elif app_label in self.allowed_apps:
+            return False
 
         return None

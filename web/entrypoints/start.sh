@@ -17,10 +17,11 @@ cp /code/tmp/config/logger.py /code/config/logger.py
 ./manage.py collectstatic --no-input
 
 if [ "$DEV_MODE" == "True" ]; then
-  # ./manage.py flush --no-input
-  ./manage.py showmigrations
+  # ./manage.py showmigrations
   ./manage.py makemigrations --no-input
+  # By default migrate w/o params apply only on 'default'
   ./manage.py migrate
+  ./manage.py migrate another_one --database=switch
   ./manage.py showmigrations
 else
   ./manage.py migrate

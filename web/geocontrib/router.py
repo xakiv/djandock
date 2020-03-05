@@ -36,7 +36,8 @@ class MyShinyRouter:
         # Autorisation de migrations de APP_NAME sur base DB_NAME
         # Si on présente une migration qui concerne notre application
         if app_label in self.allowed_apps:
-            return db == self.DB_NAME and self.ALLOWING_APP_MIGRATIONS
+            return self.ALLOWING_APP_MIGRATIONS
+            # return db == self.DB_NAME and self.ALLOWING_APP_MIGRATIONS
 
         # SI le param --database=DB_NAME
         elif db == self.DB_NAME:

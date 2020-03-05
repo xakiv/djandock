@@ -90,7 +90,7 @@ DATABASES = {
         'HOST': config("HOST"),
         'PORT': config("PORT"),
         'OPTIONS': {
-            'options': '-c search_path=djandock,public'
+            'options': '-c search_path=public'
         },
     },
     'switch': {
