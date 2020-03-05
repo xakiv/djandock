@@ -4,7 +4,7 @@ from django.conf import settings
 USER_MODEL = settings.AUTH_USER_MODEL
 
 
-class Switch(models.Model):
+class Transfer(models.Model):
 
     rank = models.PositiveSmallIntegerField(
         "Rang", unique=True)
