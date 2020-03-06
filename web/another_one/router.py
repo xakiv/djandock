@@ -14,24 +14,20 @@ class MyShinyRouter:
 
     APP_NAME = 'another_one'
     DB_NAME = 'switch'
-    ALLOWING_APP_MIGRATIONS = True
-    allowed_apps = (
-        APP_NAME,
-    )
 
     def db_for_read(self, model, **hints):
-        if model._meta.app_label in self.allowed_apps:
+        if model._meta.app_label == self.APP_NAME:
             return self.DB_NAME
         return None
 
     def db_for_write(self, model, **hints):
-        if model._meta.app_label in self.allowed_apps:
+        if model._meta.app_label == self.APP_NAME:
             return self.DB_NAME
         return None
 
     def allow_relation(self, obj1, obj2, **hints):
-        if obj1._meta.app_label in self.allowed_apps or \
-                obj2._meta.app_label in self.allowed_apps:
+        if obj1._meta.app_label == self.APP_NAME or \
+                obj2._meta.app_label == self.APP_NAME:
             return True
         return None
 
@@ -39,9 +35,8 @@ class MyShinyRouter:
         # Permet de choisir si on veut autoriser les migrations
 
         if db == self.DB_NAME:
-            logger.info((db, app_label, app_label in self.allowed_apps))
-            return app_label in self.allowed_apps
-        elif app_label in self.allowed_apps:
+            return app_label == self.APP_NAME
+        elif app_label == self.APP_NAME:
             return False
 
         return None

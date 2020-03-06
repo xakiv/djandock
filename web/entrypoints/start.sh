@@ -20,11 +20,14 @@ if [ "$DEV_MODE" == "True" ]; then
   # ./manage.py showmigrations
   ./manage.py makemigrations --no-input
   # By default migrate w/o params apply only on 'default'
-  ./manage.py migrate
-  ./manage.py migrate another_one --database=switch
+  ./manage.py custom_migrate
+  # Without faking it, I don't know how to avoid 'another_one' migration
+  # being registered on previous default migrate
+  # ./manage.py migrate --fake another_one zero
+  # ./manage.py migrate another_one --database=switch
   ./manage.py showmigrations
 else
-  ./manage.py migrate
+  ./manage.py custom_migrate
 fi
 
 ./manage.py init_admins

@@ -17,3 +17,7 @@ class Transfer(models.Model):
 
     project_to = models.ForeignKey(
         to="geocontrib.Project", on_delete=models.CASCADE, related_name="switch_projects_to")
+
+    # class Meta:
+        # db_table = 'switch\".\"another_one_transfer'
+        # db_schema = "switch"
