@@ -17,14 +17,9 @@ cp /code/tmp/config/logger.py /code/config/logger.py
 ./manage.py collectstatic --no-input
 
 if [ "$DEV_MODE" == "True" ]; then
-  # ./manage.py showmigrations
   ./manage.py makemigrations --no-input
-  # By default migrate w/o params apply only on 'default'
+  # Mandatory to handle order in app migrations
   ./manage.py custom_migrate
-  # Without faking it, I don't know how to avoid 'another_one' migration
-  # being registered on previous default migrate
-  # ./manage.py migrate --fake another_one zero
-  # ./manage.py migrate another_one --database=switch
   ./manage.py showmigrations
 else
   ./manage.py custom_migrate

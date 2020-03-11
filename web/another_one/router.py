@@ -33,9 +33,9 @@ class MyShinyRouter:
 
     def allow_migrate(self, db, app_label, model_name=None, **hints):
         # Permet de choisir si on veut autoriser les migrations
-
         if db == self.DB_NAME:
             return app_label == self.APP_NAME
+
         elif app_label == self.APP_NAME:
             return False
 
