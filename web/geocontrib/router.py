@@ -18,7 +18,7 @@ class MyShinyRouter:
     allowed_apps = (
         APP_NAME,
         'gis',
-        'session',
+        'sessions',
         'contenttypes',
         'auth',
         'sites',
